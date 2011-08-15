@@ -13,6 +13,12 @@ import android.database.sqlite.SQLiteDatabase;
 import com.charmmy.pojo.People;
 import com.charmmy.tools.MySqliteHelper;
 
+
+/**
+ * 
+ * @author charmmy
+ *
+ */
 public class PeopleDao {
 	
 	private SQLiteDatabase db;
