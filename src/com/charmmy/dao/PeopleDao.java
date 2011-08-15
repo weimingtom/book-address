@@ -16,7 +16,7 @@ import com.charmmy.tools.MySqliteHelper;
 
 /**
  * 
- * @author charmmy
+ * hello
  *
  */
 public class PeopleDao {
