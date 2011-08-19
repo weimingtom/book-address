@@ -1,4 +1,5 @@
 #labels Phase-Support
+参照我的博客：http://blog.csdn.net/jamesliulyc/article/details/6703487
 为了简单起见，这里就不用这个截图做例子了，下面就用写一个最简单的Demo。
 
 第一步：还是先建立底部的选项卡(其实就是一个TableLayout布局),代码如下(main.xml)：
