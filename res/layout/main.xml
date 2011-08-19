@@ -6,134 +6,53 @@
 	  android:background="#ffffff">
 	<EditText android:layout_width="0dip"
 			android:layout_height="0dip"/>
-	<LinearLayout android:orientation="horizontal"
-	    android:id="@+id/contactBar"
-	    android:layout_width="fill_parent"
-		android:layout_height="45dip"
-		xmlns:android="http://schemas.android.com/apk/res/android">
-		<ImageButton 
-			android:id="@+id/btnChange"
-			android:layout_width="54dip"
+	<!-- head bar (header_bar)-->
+	<FrameLayout 
+			android:id="@+id/headerBar"
+			android:layout_width="fill_parent"
 			android:layout_height="45dip"
-			android:src="@drawable/btn_group_change_normal"
-			android:background="@drawable/header_bg"
-			android:gravity="center"
-			android:layout_gravity="left"
-			/>
-	   <ImageView 
-	   		android:src="@drawable/bg_btn_line"
-	   		android:layout_width="wrap_content"
-			android:layout_height="45dip"
-	   />
-	   <TextView 
-	   		android:layout_width="match_parent"
-			android:layout_height="45dip"
-			android:background="@drawable/header_bg"
-			android:text="联系人"
-			android:textColor="#fcfdfe"
-			android:textSize="16dip"
-			android:gravity="center"
-			android:layout_gravity="center"
-			android:layout_weight="1"
-	   />
-	    <ImageView 
-	   		android:src="@drawable/bg_btn_line"
-	   		android:layout_width="wrap_content"
-			android:layout_height="45dip"
-	   />
-	   <ImageButton 
-			android:id="@+id/btnAdd"
-			android:layout_width="54dip"
-			android:layout_height="45dip"
-			android:src="@drawable/btn_hi_header_add_normal"
-			android:background="@drawable/header_bg"
-			android:gravity="center"
-			android:layout_gravity="right"
-			/>
-	</LinearLayout>
+			android:background="#f3f3f3"
+			>
+		<include
+        android:visibility="visible"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        layout="@layout/header_bar"
+        />
+			
+    </FrameLayout>
 	
-	<LinearLayout
+	<!-- content (search_content)-->
+	<FrameLayout 
 		android:id="@+id/content"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-		android:layout_below="@id/contactBar"
+		android:layout_below="@id/headerBar"
 		android:orientation="vertical"
+		android:background="#f3f3f3"
 		>
-		<FrameLayout 
-			android:layout_width="fill_parent"
-			android:layout_height="46dip"
-			android:background="#f3f3f3"
-			>
-			<EditText 
-				android:id="@+id/searchEdit"
-				android:layout_width="fill_parent"
-				android:layout_height="32dip"
-				android:layout_gravity="center"
-				android:paddingTop="0dip"
-				android:paddingBottom="0dip"
-				android:paddingLeft="5dip"
-				android:layout_marginLeft="20dip"
-				android:layout_marginRight="36dip"
-				android:drawableLeft="@drawable/ic_hi_search"
-				android:drawablePadding="2dip"
-				android:background="@drawable/search_input_bg"
-				android:hint="共有0个联系人"
-				android:textSize="16dip"
-				android:singleLine="true"
-			/>
-		</FrameLayout>
-		<TextView
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent" 
-			android:gravity="center"
-			android:text="暂无联系人"
-			android:textSize="24sp"
-			android:textColor="#0f6aae"
-			android:background="#ffffff"
-		/>
-	</LinearLayout>
-	<TableLayout android:layout_width="fill_parent"
+		<include
+	        android:visibility="visible"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        layout="@layout/search_content"
+	        />
+	</FrameLayout>
+
+	<!-- bottom tab (bottom_tab)-->
+	<FrameLayout 
+		android:layout_width="fill_parent"
 		android:layout_height="54dip"
 		android:orientation="horizontal"
 		android:layout_gravity="bottom"
 		android:background="@drawable/bg_tab_pressed"
-		android:layout_alignParentBottom="true">
-		<TableRow
-			android:layout_width="fill_parent"
-		    android:layout_height="54dip"
-			>
-			<ImageButton 
-				android:layout_width="70dip"
-				android:layout_height="54dip"
-				android:src="@drawable/bg_tab_dial_normal"
-				android:background="@drawable/bottom_bg"
-				android:gravity="center"
-				android:layout_weight="1"
-				/>
-			<ImageButton 
-				android:layout_width="70dip"
-				android:layout_height="54dip"
-				android:background="@drawable/bottom_bg"
-				android:src="@drawable/bg_tab_contact_normal"
-				android:gravity="center"
-				android:layout_weight="1"
-				/>
-	        <ImageButton 
-				android:layout_width="70dip"
-				android:layout_height="54dip"
-				android:background="@drawable/bottom_bg"
-				android:src="@drawable/bg_tab_sms_normal"
-				android:gravity="center"
-				android:layout_weight="1"
-				/>
-			<ImageButton 
-				android:layout_width="70dip"
-				android:layout_height="54dip"
-				android:background="@drawable/bottom_bg"
-				android:src="@drawable/bg_tab_setting_normal"
-				android:gravity="center"
-				android:layout_weight="1"
-				/>		
-		</TableRow>		
-	</TableLayout>
+		android:layout_alignParentBottom="true"
+		>
+		<include
+	        android:visibility="visible"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        layout="@layout/bottom_tab"
+	        />
+	</FrameLayout>
 </RelativeLayout>
