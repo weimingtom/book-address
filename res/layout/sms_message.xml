@@ -1,0 +1,41 @@
+<RelativeLayout 
+	  xmlns:android="http://schemas.android.com/apk/res/android"
+	  android:layout_width="wrap_content" 
+	  android:layout_height="wrap_content"
+	  android:background="#ffffff">
+	 <LinearLayout android:orientation="horizontal"
+	 	android:id="@+id/smsMessageHeader"
+	    android:layout_width="fill_parent"
+		android:layout_height="45dip"
+		xmlns:android="http://schemas.android.com/apk/res/android">
+		<TextView 
+		   		android:layout_width="match_parent"
+				android:layout_height="45dip"
+				android:background="@drawable/header_bg"
+				android:text="信息"
+				android:textColor="#fcfdfe"
+				android:paddingLeft="25dip"
+				android:textSize="18sp"
+				android:gravity="left|center"
+				android:layout_weight="1"
+		   />  
+		<ImageView 
+		   		android:src="@drawable/bg_btn_line"
+		   		android:layout_width="wrap_content"
+				android:layout_height="45dip"
+		   />
+	    <ImageButton 
+			android:layout_width="54dip"
+			android:layout_height="45dip"
+			android:src="@drawable/compose_msg"
+			android:background="@drawable/header_bg"
+			android:layout_gravity="right"
+			/>
+	</LinearLayout>
+	<ListView 
+		android:id="@+id/smsMessageList"
+		android:layout_below="@id/smsMessageHeader"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		/>
+</RelativeLayout>
