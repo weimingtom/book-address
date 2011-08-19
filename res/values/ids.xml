@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>  
+  <!-- header_bar.xml -->
+  <item type="id" name="btnChange"/>  
+  <item type="id" name="btnAdd"/>  
+  <!-- search -->
+  <item type="id" name="searchEdit"/>  
+  <!-- content -->
+  <!-- bottom_tab.xml -->
+  <item type="id" name="last_contact" />
+  <item type="id" name="contact_people" />
+  <item type="id" name="sms_message" />
+  <item type="id" name="setting" />
+</resources>  
+ 
