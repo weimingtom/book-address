@@ -1,0 +1,228 @@
+#labels Phase-Support
+为了简单起见，这里就不用这个截图做例子了，下面就用写一个最简单的Demo。
+
+第一步：还是先建立底部的选项卡(其实就是一个TableLayout布局),代码如下(main.xml)：
+
+view plaincopy to clipboardprint?<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout   
+     xmlns:android="http://schemas.android.com/apk/res/android"  
+      android:layout_width="wrap_content"   
+      android:layout_height="wrap_content"  
+      android:background="#ffffff">  
+<TableLayout android:layout_width="fill_parent"  
+        android:layout_height="54dip"  
+        android:orientation="horizontal"  
+        android:layout_gravity="bottom"  
+        android:layout_alignParentBottom="true"  
+        xmlns:android="http://schemas.android.com/apk/res/android"  
+        >  
+        <TableRow  
+            android:layout_width="fill_parent"  
+            android:layout_height="54dip"  
+            >  
+            <Button   
+                android:id="@+id/btn1"  
+                android:background="#888888"  
+                android:layout_width="70dip"  
+                android:layout_height="54dip"  
+                android:layout_weight="1"  
+                android:text="Button 1"  
+                />  
+            <Button   
+                android:id="@+id/btn2"  
+                android:background="#888888"  
+                android:layout_width="70dip"  
+                android:layout_height="54dip"  
+                android:layout_weight="1"  
+                android:text="Button 2"  
+                />  
+            <Button   
+                android:background="#888888"  
+                android:id="@+id/btn3"  
+                android:layout_width="70dip"  
+                android:layout_height="54dip"  
+                android:layout_weight="1"  
+                android:text="Button 3"  
+                />  
+            <Button   
+                android:background="#888888"  
+                android:id="@+id/btn4"  
+                android:layout_width="70dip"  
+                android:layout_height="54dip"  
+                android:layout_weight="1"  
+                android:text="Button 4"  
+                />         
+        </TableRow>         
+    </TableLayout>  
+</RelativeLayout>  
+
+第二步：就是建立4个xml布局文件，里面可以只写一个TextView，命名为btn1_layout.xml,btn2_layout.xml,btn3_layout.xml,btn4_layout.xml.类似如下：
+
+ 
+
+view plaincopy to clipboardprint?<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout  
+     xmlns:android="http://schemas.android.com/apk/res/android"  
+      android:layout_width="fill_parent"   
+      android:layout_height="fill_parent">  
+      <TextView   
+        android:layout_width="fill_parent"   
+        android:layout_height="fill_parent"  
+        android:text="Button 1"  
+        android:textSize="36sp"  
+        android:textColor="#4a9ad8"  
+      />  
+</LinearLayout>  
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	 xmlns:android="http://schemas.android.com/apk/res/android"
+	  android:layout_width="fill_parent" 
+	  android:layout_height="fill_parent">
+	  <TextView 
+	  	android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:text="Button 1"
+	    android:textSize="36sp"
+	    android:textColor="#4a9ad8"
+	  />
+</LinearLayout> 
+
+
+
+
+第三步： 
+
+ 将下列代码插入到第一步中main.xml中，位于TableLayout之上
+
+view plaincopy to clipboardprint?<ViewStub   
+            android:id="@+id/btn1ViewStub"    
+            android:layout="@layout/btn1_layout"  
+            android:layout_width="fill_parent"  
+            android:layout_height="fill_parent"   
+        />  
+    <ViewStub   
+            android:id="@+id/btn2ViewStub"    
+            android:layout="@layout/btn2_layout"  
+            android:layout_width="fill_parent"  
+            android:layout_height="fill_parent"   
+        />  
+    <ViewStub   
+            android:id="@+id/btn3ViewStub"    
+            android:layout="@layout/btn3_layout"  
+            android:layout_width="fill_parent"  
+            android:layout_height="fill_parent"   
+        />  
+    <ViewStub   
+            android:id="@+id/btn4ViewStub"    
+            android:layout="@layout/btn4_layout"  
+            android:layout_width="fill_parent"  
+            android:layout_height="fill_parent"   
+        />  
+<ViewStub 
+			android:id="@+id/btn1ViewStub"  
+			android:layout="@layout/btn1_layout"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" 
+		/>
+	<ViewStub 
+			android:id="@+id/btn2ViewStub"  
+			android:layout="@layout/btn2_layout"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" 
+		/>
+	<ViewStub 
+			android:id="@+id/btn3ViewStub"  
+			android:layout="@layout/btn3_layout"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" 
+		/>
+	<ViewStub 
+			android:id="@+id/btn4ViewStub"  
+			android:layout="@layout/btn4_layout"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" 
+		/> 
+
+ 
+
+ 第四步：Activity中，产生点击事件后，首先要将所有的ViewStub设置成不可见，否则将会出问题（你可以试试），java代码如下，具体就不解释了，能用ViewStub相信能看懂。
+
+view plaincopy to clipboardprint?package com.tab.activity;  
+  
+import android.app.Activity;  
+import android.graphics.Color;  
+import android.os.Bundle;  
+import android.view.View;  
+import android.view.ViewStub;  
+import android.widget.Button;  
+  
+public class MainActivity extends Activity {  
+      
+    private ViewStub[] viewStub = new ViewStub[4];  
+    private Button currentBtn;  
+    private Button lastBtn;  
+      
+    private int[] tabBtnIds = {R.id.btn1, R.id.btn2,  
+            R.id.btn3, R.id.btn4};  
+      
+    private Button[] tabBtn = new Button[4];  
+      
+    @Override  
+    public void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.main);  
+        viewStub[0] = (ViewStub) findViewById(R.id.btn1ViewStub);  
+        viewStub[1] = (ViewStub) findViewById(R.id.btn2ViewStub);  
+        viewStub[2] =(ViewStub) findViewById(R.id.btn3ViewStub);  
+        viewStub[3] = (ViewStub) findViewById(R.id.btn4ViewStub);  
+        currentBtn = (Button) findViewById(R.id.btn2);  
+        TabBtnClickListener tabBtnListener = new TabBtnClickListener();  
+        for(int i=0; i<tabBtnIds.length; i++) {  
+            tabBtn[i] = (Button) findViewById(tabBtnIds[i]);  
+            tabBtn[i].setOnClickListener(tabBtnListener);  
+        }  
+          
+    }  
+      
+    class TabBtnClickListener implements View.OnClickListener {  
+  
+        @Override  
+        public void onClick(View v) {  
+            lastBtn = currentBtn;  
+            currentBtn = (Button) v;  
+            if(currentBtn.getId() == lastBtn.getId()) {  
+                return;  
+            }  
+            currentBtn.setBackgroundColor(Color.BLUE);  
+            lastBtn.setBackgroundColor(Color.GRAY);  
+            int currentIndex = -1;  
+            switch(currentBtn.getId()) {  
+                case R.id.btn1:  
+                    currentIndex = 0;  
+                    break;  
+                case R.id.btn2:  
+                    currentIndex = 1;  
+                    break;  
+                case R.id.btn3:  
+                    currentIndex = 2;  
+                    break;  
+                case R.id.btn4:  
+                    currentIndex = 3;  
+                    break;  
+            }  
+            for(int i=0; i<viewStub.length; i++) {  
+                viewStub[i].setVisibility(View.INVISIBLE);  
+            }  
+            for(int i=0; i<viewStub.length; i++) {  
+                if(currentIndex == -1) {  
+                    break;  
+                }  
+                if(currentIndex != i) {  
+                    viewStub[i].setVisibility(View.INVISIBLE);  
+                } else {  
+                    viewStub[i].setVisibility(View.VISIBLE);  
+                }  
+            }  
+        }  
+    }  
+}  
