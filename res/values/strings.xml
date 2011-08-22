@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">通讯录</string>
+    <string name="contact_edit_name_edit_null">联系人姓名不能为空</string>
 </resources>
