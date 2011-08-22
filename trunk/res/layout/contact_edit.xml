@@ -63,7 +63,7 @@
 			<EditText 
 				android:layout_width="fill_parent"
 				android:layout_height="36dip"
-				android:background="@drawable/contact_edit_input"
+				android:background="@drawable/contact_edit_edittext"
 				android:paddingLeft="8dip"
 				android:paddingTop="3dip"
 				android:paddingBottom="3dip"
@@ -79,7 +79,7 @@
 		<EditText 
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
-				android:background="@drawable/contact_edit_input"
+				android:background="@drawable/contact_edit_edittext"
 				android:padding="5dip"
 				android:layout_marginTop="6dip"
 				android:layout_marginBottom="6dip"
@@ -92,7 +92,7 @@
 		<EditText 
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
-				android:background="@drawable/contact_edit_input"
+				android:background="@drawable/contact_edit_edittext"
 				android:padding="5dip"
 				android:layout_marginTop="6dip"
 				android:layout_marginBottom="6dip"
@@ -105,7 +105,7 @@
 		<EditText 
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
-				android:background="@drawable/contact_edit_input"
+				android:background="@drawable/contact_edit_edittext"
 				android:padding="5dip"
 				android:layout_marginTop="6dip"
 				android:layout_marginBottom="6dip"
@@ -117,7 +117,7 @@
 		<EditText 
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
-				android:background="@drawable/contact_edit_input"
+				android:background="@drawable/contact_edit_edittext"
 				android:padding="5dip"
 				android:layout_marginTop="6dip"
 				android:layout_marginBottom="6dip"
@@ -129,7 +129,7 @@
 		<EditText 
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:background="@drawable/contact_edit_input"
+				android:background="@drawable/contact_edit_edittext"
 				android:padding="5dip"
 				android:layout_marginTop="6dip"
 				android:layout_marginBottom="16dip"
