@@ -61,6 +61,7 @@
 			</FrameLayout>
 			<!-- 姓名 -->
 			<EditText 
+				android:id="@+id/nameEdit"
 				android:layout_width="fill_parent"
 				android:layout_height="36dip"
 				android:background="@drawable/contact_edit_edittext"
@@ -77,6 +78,7 @@
 		</LinearLayout>
 		
 		<EditText 
+				android:id="@+id/phoneEdit"
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
 				android:background="@drawable/contact_edit_edittext"
@@ -90,6 +92,7 @@
 				android:hint="请输入手机号码"
 			/>
 		<EditText 
+				android:id="@+id/telEdit"
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
 				android:background="@drawable/contact_edit_edittext"
@@ -103,6 +106,7 @@
 				android:hint="请输入电话号码"
 			/>
 		<EditText 
+				android:id="@+id/emailEdit"
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
 				android:background="@drawable/contact_edit_edittext"
@@ -115,6 +119,7 @@
 				android:hint="请输入电子邮件 "
 			/>
 		<EditText 
+				android:id="@+id/addressEdit"
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
 				android:background="@drawable/contact_edit_edittext"
@@ -127,6 +132,7 @@
 				android:hint="请输入地址 "
 			/>
 		<EditText 
+				android:id="@+id/backContentEdit"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:background="@drawable/contact_edit_edittext"

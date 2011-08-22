@@ -9,6 +9,17 @@ public class People {
 		this.phone = phone;
 	}
 	
+	public People(String name, String phone, String tel, String email,
+			String address, String backContent) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.tel = tel;
+		this.email = email;
+		this.address = address;
+		this.backContent = backContent;
+	}
+
 	public People(int id, String name, String phone) {
 		super();
 		this.id = id;
