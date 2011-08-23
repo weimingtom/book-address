@@ -1,9 +1,11 @@
 package com.charmmy.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -33,6 +35,8 @@ public class ContactEditActivity extends Activity {
 	private EditText addressEdit;
 	private EditText backContentEdit;
 	
+	private Intent intent;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		 super.onCreate(savedInstanceState);
@@ -40,6 +44,9 @@ public class ContactEditActivity extends Activity {
 		 requestWindowFeature(Window.FEATURE_PROGRESS);
 	     setContentView(R.layout.contact_edit);
 	     
+	     intent = new Intent();
+		 intent.setClass(ContactEditActivity.this, MainActivity.class);
+			
 	     Button saveBtn = (Button) findViewById(R.id.btnSave);
 	     saveBtn.setOnClickListener(new View.OnClickListener() {
 			
@@ -54,9 +61,31 @@ public class ContactEditActivity extends Activity {
 							tel, email, address, backContent);
 				PeopleDao dao = new PeopleDao(ContactEditActivity.this);
 				dao.add(people);
-				Intent intent = new Intent();
-				intent.setClass(ContactEditActivity.this, MainActivity.class);
+				final ProgressDialog p_dialog = 
+					ProgressDialog.show(ContactEditActivity.this,"请等待","正在为您保存...",true); 
+				new Thread(){
+					public void run() {
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						} finally {
+							p_dialog.dismiss();
+						}
+					}
+				}.start();
 				startActivity(intent);
+				finish();
+			}
+		});
+	     
+	    Button cancelBtn = (Button) findViewById(R.id.btnCancel);
+	    cancelBtn.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(intent);
+				finish();
 			}
 		});
 	}
@@ -92,6 +121,19 @@ public class ContactEditActivity extends Activity {
 		toast.setGravity(Gravity.CENTER, 0, 0);
 		toast.show();
 	}
+
+	@Override
+	protected void onStop() {
+		super.onDestroy();
+	}
+	
+	public boolean OnKeyDown(int keyCode,KeyEvent event){   
+		 if (keyCode==KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {   
+			 startActivity(intent);
+		 }
+		 return false;
+	}
+	
 	
 
 }

@@ -48,6 +48,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, ContactEditActivity.class);
 				startActivity(intent);
+				finish();
 			}
 		});
     }
