@@ -10,7 +10,7 @@
 	   		android:layout_width="fill_parent"
 			android:layout_height="45dip"
 			android:background="@drawable/header_bg"
-			android:text="新建联系人"
+			android:text="查看联系人"
 			android:textColor="#fcfdfe"
 			android:paddingLeft="15dip"
 			android:textSize="18sp"
@@ -35,7 +35,6 @@
 			>
 		<!-- 头像和姓名 -->
 		<LinearLayout 
-			android:layout_below="@id/contactEditTitle"
 			android:orientation="horizontal"
 			android:layout_marginTop="12dip"
 			android:layout_marginBottom="6dip"
@@ -60,7 +59,7 @@
 			   />
 			</FrameLayout>
 			<!-- 姓名 -->
-			<EditText 
+			<TextView
 				android:id="@+id/nameEdit"
 				android:layout_width="fill_parent"
 				android:layout_height="36dip"
@@ -77,7 +76,7 @@
 			/>
 		</LinearLayout>
 		
-		<EditText 
+		<TextView
 				android:id="@+id/phoneEdit"
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
@@ -91,7 +90,7 @@
 				android:inputType="number"
 				android:hint="请输入手机号码"
 			/>
-		<EditText 
+		<TextView
 				android:id="@+id/telEdit"
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
@@ -105,7 +104,7 @@
 				android:inputType="number"
 				android:hint="请输入电话号码"
 			/>
-		<EditText 
+		<TextView
 				android:id="@+id/emailEdit"
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
@@ -116,9 +115,8 @@
 				android:textColorHint="#AAAAAA"
 				android:textSize="15dip"
 				android:singleLine="true"
-				android:hint="请输入电子邮件 "
 			/>
-		<EditText 
+		<TextView
 				android:id="@+id/addressEdit"
 				android:layout_width="match_parent"
 				android:layout_height="36dip"
@@ -129,9 +127,8 @@
 				android:textColorHint="#AAAAAA"
 				android:textSize="15dip"
 				android:singleLine="true"
-				android:hint="请输入地址 "
 			/>
-		<EditText 
+		<TextView
 				android:id="@+id/backContentEdit"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -145,7 +142,6 @@
 				android:gravity="left|top"
 				android:minLines="3"
 				 android:maxLines="7"
-				android:hint="请输入备注 "
 			/>
 
 	</LinearLayout>
@@ -159,20 +155,11 @@
 		android:layout_alignParentBottom="true"
 	>
 		<Button 
-			android:id="@+id/btnSave"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@drawable/normal_btn_pressed"
-			android:text="保存"
-			android:textSize="18sp"
-			android:layout_weight="1"
-		/>
-		<Button 
 			android:id="@+id/btnCancel"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:background="@drawable/normal_btn_pressed"
-			android:text="取消"
+			android:text="返回"
 			android:textSize="18sp"
 			android:layout_weight="1"
 		/>

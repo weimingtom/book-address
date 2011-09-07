@@ -1,0 +1,21 @@
+<RelativeLayout 
+	  xmlns:android="http://schemas.android.com/apk/res/android"
+	  android:layout_width="wrap_content" 
+	  android:layout_height="wrap_content"
+	  android:background="#ffffff">
+	<TextView 
+	   		android:layout_width="fill_parent"
+			android:layout_height="45dip"
+			android:background="@drawable/header_bg"
+			android:text="最近联系人"
+			android:textColor="#fcfdfe"
+			android:paddingLeft="25dip"
+			android:textSize="18sp"
+			android:gravity="left|center"
+	   />  
+	<ListView 
+		android:id="@+id/last_people"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		/>
+</RelativeLayout>

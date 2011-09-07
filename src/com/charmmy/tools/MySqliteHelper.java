@@ -9,7 +9,7 @@ public class MySqliteHelper extends SQLiteOpenHelper {
 	
 	
 	private String sql = "create table t_people ( " +
-								"id integer primary key, " +
+								"_id integer primary key, " +
 								"name varchar(20), " +
 								"phone varchar(15), " +
 								"tel varchar(20), " +

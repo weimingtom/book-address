@@ -3,6 +3,7 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="vertical"
+	android:background="#ffffff"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	>
 	<FrameLayout 
@@ -10,6 +11,7 @@
 		android:layout_height="46dip"
 		android:background="#f3f3f3"
 		>
+	
 		<EditText 
 			android:id="@+id/searchEdit"
 			android:layout_width="fill_parent"
@@ -22,19 +24,22 @@
 			android:layout_marginRight="36dip"
 			android:drawableLeft="@drawable/ic_hi_search"
 			android:drawablePadding="2dip"
-			android:background="@drawable/search_input_bg"
+			android:background="@drawable/contact_edit_edittext"
 			android:hint="共有0个联系人"
 			android:textSize="16dip"
 			android:singleLine="true"
 		/>
 	</FrameLayout>
-	<TextView
+	<ListView
+		android:id="@android:id/list"
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent" 
-		android:gravity="center"
-		android:text="暂无联系人"
-		android:textSize="24sp"
-		android:textColor="#0f6aae"
+		android:layout_height="500dip"
+		android:drawSelectorOnTop="false"
+		android:listSelector="@drawable/bg_listitem_gradient"  
+		android:fadingEdge="none" 
+		android:dividerHeight="1dip"
+		android:divider="#bcbcbc" 
+		android:scrollingCache="false"
 		android:background="#ffffff"
 	/>
 </LinearLayout>
