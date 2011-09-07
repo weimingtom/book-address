@@ -16,7 +16,7 @@ import com.charmmy.tools.MySqliteHelper;
 
 /**
  * 
- * @author charmmy
+ * @author james
  *
  */
 public class PeopleDao {
@@ -55,9 +55,9 @@ public class PeopleDao {
 			idstr[i] = String.valueOf(ids[i]);
 			
 		}
-		sb.deleteCharAt(ids.length-1);
+		sb.deleteCharAt(ids.length);
 		db = helper.getWritableDatabase();
-		db.delete(PEOPLE_TABLE, "id in (" + sb + ")", idstr);
+		db.delete(PEOPLE_TABLE, "_id in (" + sb + ")", idstr);
 		return true;
 	}
 	
@@ -71,7 +71,7 @@ public class PeopleDao {
 		values.put("tel", people.getTel());
 		values.put("address", people.getAddress());
 		values.put("back_content", people.getBackContent());
-		db.update(PEOPLE_TABLE, values, "id=?",
+		db.update(PEOPLE_TABLE, values, "_id=?",
 				new String[]{String.valueOf(people.getId())});
 		return true;
 	}
@@ -79,9 +79,9 @@ public class PeopleDao {
 	//根据id查询联系人
 	public People find(int id) {
 		db = helper.getReadableDatabase();
-		String[] columns = {"id", "name", "phone",
+		String[] columns = {"_id", "name", "phone",
 				"tel", "email", "address", "back_content"};
-		Cursor cursor = db.query(PEOPLE_TABLE, columns, "id=?", 
+		Cursor cursor = db.query(PEOPLE_TABLE, columns, "_id=?", 
 				new String[]{String.valueOf(id)}, null, null, null);
 		if(cursor.moveToNext()) {
 			People people  = new People();
@@ -98,13 +98,21 @@ public class PeopleDao {
 		return null;
 	}
 	
+	public Cursor findByName(String name) {
+		db = helper.getReadableDatabase();
+		String[] columns = {"_id","name", "phone",
+				"tel", "email", "address", "back_content"};
+		Cursor cursor = db.query(PEOPLE_TABLE, columns, "name LIKE '"+name+ "%'", 
+				null, null, null, "name ASC");
+		return cursor;
+	}
 	//查询所有联系人
 	public List<People> findAll() {
 		db = helper.getReadableDatabase();
 		String[] columns = {"id", "name", "phone",
 				"tel", "email", "address", "back_content"};
 		Cursor cursor = db.query(PEOPLE_TABLE, columns, null, 
-				null, null, null, "name DESC");
+				null, null, null, "name ASC");
 		List<People> list = new ArrayList<People>();
 		while(cursor.moveToNext()) {
 			People people  = new People();
@@ -118,6 +126,15 @@ public class PeopleDao {
 			list.add(people);
 		} 
 		return list;
+	}
+	
+	public Cursor findAllCursor() {
+		db = helper.getReadableDatabase();
+		String[] columns = { "_id","name", "phone",
+				"tel", "email", "address", "back_content"};
+		Cursor cursor = db.query(PEOPLE_TABLE, columns, null, 
+				null, null, null, "name ASC");
+		return cursor;
 	}
 
 	//所有联系人总得条数

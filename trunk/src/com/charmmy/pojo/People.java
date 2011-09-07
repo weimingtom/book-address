@@ -1,6 +1,10 @@
 package com.charmmy.pojo;
 
-public class People {
+import java.io.Serializable;
+
+public class People implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	public People(){}
 	
@@ -12,6 +16,18 @@ public class People {
 	public People(String name, String phone, String tel, String email,
 			String address, String backContent) {
 		super();
+		this.name = name;
+		this.phone = phone;
+		this.tel = tel;
+		this.email = email;
+		this.address = address;
+		this.backContent = backContent;
+	}
+	
+	public People(int id,String name, String phone, String tel, String email,
+			String address, String backContent) {
+		super();
+		this.id = id;
 		this.name = name;
 		this.phone = phone;
 		this.tel = tel;

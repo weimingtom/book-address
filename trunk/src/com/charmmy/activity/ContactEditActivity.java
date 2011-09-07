@@ -1,7 +1,6 @@
 package com.charmmy.activity;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -10,10 +9,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.charmmy.dao.PeopleDao;
 import com.charmmy.pojo.People;
+import com.charmmy.tools.DefineFinal;
 
 /*
  * James Liu
@@ -21,6 +22,7 @@ import com.charmmy.pojo.People;
  */
 public class ContactEditActivity extends Activity {
 	
+	private int id;
 	private String name;
 	private String phone;
 	private String tel; 
@@ -35,6 +37,8 @@ public class ContactEditActivity extends Activity {
 	private EditText addressEdit;
 	private EditText backContentEdit;
 	
+	private boolean isEdit = false;
+	
 	private Intent intent;
 	
 	@Override
@@ -43,37 +47,32 @@ public class ContactEditActivity extends Activity {
 		 requestWindowFeature(Window.FEATURE_NO_TITLE);
 		 requestWindowFeature(Window.FEATURE_PROGRESS);
 	     setContentView(R.layout.contact_edit);
+	     initValues();
 	     
 	     intent = new Intent();
-		 intent.setClass(ContactEditActivity.this, MainActivity.class);
+		 intent.setClass(ContactEditActivity.this, MainTabActivity.class);
 			
 	     Button saveBtn = (Button) findViewById(R.id.btnSave);
 	     saveBtn.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				initValues();
+				getString();
 				if(false == checkEditValues()) {
 					return;
 				}
+				
 				People people = 
-					new People(name, phone, 
+					new People(id,name, phone, 
 							tel, email, address, backContent);
 				PeopleDao dao = new PeopleDao(ContactEditActivity.this);
-				dao.add(people);
-				final ProgressDialog p_dialog = 
-					ProgressDialog.show(ContactEditActivity.this,"请等待","正在为您保存...",true); 
-				new Thread(){
-					public void run() {
-						try {
-							Thread.sleep(1000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						} finally {
-							p_dialog.dismiss();
-						}
-					}
-				}.start();
+				if(isEdit == false) {
+					dao.add(people);
+				} else {
+					dao.update(people);
+				}
+				
+				Toast.makeText(ContactEditActivity.this, "保存联系人成功", Toast.LENGTH_SHORT).show();
 				startActivity(intent);
 				finish();
 			}
@@ -97,7 +96,20 @@ public class ContactEditActivity extends Activity {
 		emailEdit = (EditText) findViewById(R.id.emailEdit);
 		addressEdit = (EditText) findViewById(R.id.addressEdit);
 		backContentEdit = (EditText) findViewById(R.id.backContentEdit);
-		getString();
+		TextView contactEditTitle = (TextView) findViewById(R.id.contactEditTitle);
+		
+		People mPeople = (People)getIntent().getSerializableExtra(DefineFinal.INTENT_PEOPLE_DATA);
+	    if(mPeople != null) {
+	    	 isEdit = true;
+	    	 contactEditTitle.setText("编辑联系人");
+	    	 id = mPeople.getId();
+	    	 nameEdit.setText(mPeople.getName());
+	    	 phoneEdit.setText(mPeople.getPhone());
+	    	 telEdit.setText(mPeople.getTel());
+	    	 emailEdit.setText(mPeople.getEmail());
+	    	 addressEdit.setText(mPeople.getAddress());
+	    	 backContentEdit.setText(mPeople.getBackContent());
+	    }
 	}
 	
 	private void getString() {
@@ -127,9 +139,11 @@ public class ContactEditActivity extends Activity {
 		super.onDestroy();
 	}
 	
-	public boolean OnKeyDown(int keyCode,KeyEvent event){   
+	@Override
+	public boolean onKeyDown(int keyCode,KeyEvent event){   
 		 if (keyCode==KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {   
 			 startActivity(intent);
+			 finish();
 		 }
 		 return false;
 	}
