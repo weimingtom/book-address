@@ -77,7 +77,7 @@ public class ContactBookActivity extends ListActivity implements  TextWatcher{
         editSearch.addTextChangedListener((TextWatcher) this);
         peopleDao = new PeopleDao(this);
         int countPeople = getCountPeople();
-        editSearch.setHint("共有" + countPeople + "个联系人");
+        editSearch.setHint("鍏辨湁" + countPeople + "涓仈绯讳汉");
         readAllContacts();
         registerForContextMenu(getListView()); 
         initPopupWindow();
@@ -92,19 +92,17 @@ public class ContactBookActivity extends ListActivity implements  TextWatcher{
 		Adapter adapter = (SimpleCursorAdapter) lv.getAdapter();
 		Cursor c = (Cursor)adapter.getItem(position);
 		currentId = c.getInt(c.getColumnIndex("_id"));
-		menu.setHeaderTitle("菜单");
-		menu.add(0, MENUITEM_DELETE, 0, "删除");
-		menu.add(0, MENUITEM_DETAIL, 0, "查看");
-		menu.add(0, MENUITEM_EDIT, 0, "编辑");
+		menu.setHeaderTitle("鑿滃崟");
+		menu.add(0, MENUITEM_DELETE, 0, "鍒犻櫎");
+		menu.add(0, MENUITEM_DETAIL, 0, "鏌ョ湅");
+		menu.add(0, MENUITEM_EDIT, 0, "缂栬緫");
     }
     
-    //获得总人数
 	private int getCountPeople() {
 		int count = peopleDao.count();
 		return count;
 	}
 	
-	//取得总人数，然后放到Adpter里面去
 	private void readAllContacts() {
 		curContacts = peopleDao.findAllCursor();
 		slvAdapter = new SimpleCursorAdapter(this, 
@@ -122,7 +120,6 @@ public class ContactBookActivity extends ListActivity implements  TextWatcher{
 		Utility.setListViewHeightBasedOnChildren(this.getListView());  
 		startManagingCursor(curContacts);
 	}
-	 //当前Activity destroy时,进行一些操作
 	 public void onDestroy() {
 	        super.onDestroy();
 	        if (getListView()!=null) curContacts.close();
@@ -156,8 +153,8 @@ public class ContactBookActivity extends ListActivity implements  TextWatcher{
 				peopleDao.delete(currentId);
 				readAllContacts();
 				int countPeople = getCountPeople();
-		        editSearch.setHint("共有" + countPeople + "个联系人");
-				Toast.makeText(this, "删除联系人成功",
+				editSearch.setHint("鍏辨湁" + countPeople + "涓仈绯讳汉");
+				Toast.makeText(this, "鍒犻櫎鎴愬姛",
 						Toast.LENGTH_SHORT).show();
 			}
 		} else if(item.getItemId() == MENUITEM_EDIT) {
