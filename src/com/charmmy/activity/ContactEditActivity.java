@@ -21,7 +21,7 @@ import com.charmmy.tools.DefineFinal;
  * 新建联系人
  */
 public class ContactEditActivity extends Activity {
-	
+	 
 	private int id;
 	private String name;
 	private String phone;
